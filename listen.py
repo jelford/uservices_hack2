@@ -6,7 +6,7 @@ EXCHANGE = 'combo'
 ROUTING_KEY = '#'
 
 def on_consume(ch, method, properties, body):
-  print body
+  print method.routing_key, body
 
 conn = BlockingConnection(ConnectionParameters(host=RABBIT_HOST,
                                                port=RABBIT_PORT))

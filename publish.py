@@ -1,4 +1,4 @@
-# A besic message publisher
+# A basic message publisher
 import pika
 from json import dumps
 
@@ -8,5 +8,5 @@ connection = pika.BlockingConnection(parameters)
 channel = connection.channel()
 channel.queue_declare(queue='combo')
 # properties = pika.BasicProperties(content_type="text/plain", delivery_mode=2)
-message = { "authors": [ "@jelford", "@sleepyfox" ] }
-channel.basic_publish('combo', 'test_topic', dumps(message))
+message = { "id": 45 }
+channel.basic_publish('combo', 'game.started', dumps(message))
